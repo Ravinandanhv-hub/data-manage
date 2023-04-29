@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="list">
+    <div class="d-block">
+        <input *ngIf="post?.length>0" class="d-inline-block" id="check" type="checkbox" [checked]="(arr?.length==post?.length)? true:false" 
+         (change)="selectAll($event)">
+        <button *ngIf="arr?.length>0" class="btn btn-warning d-inline-block ml" type="button" (click)="deleteAll()">
+         Delete{{arr?.length>0? ' ('+arr?.length+')': ''}}
+        </button>
+        <button *ngIf="arr?.length>0" class="btn btn-primary d-inline-block ml" type="button" (click)="bEdit()">
+          {{arr?.length>1? 'Bulk Edit ('+arr?.length+')': 'Edit ('+arr?.length+')'}}
+        </button>
+      </div>
+    <div class="d-flex flex-column w-100  position-relative">
+      <div class="card-container">
+        <div class="list-group">
+          <div
+            class="list-group-item d-flex align-items-center justify-content-start header py-0 bg-light text-uppercase font-11 fw-500">
+            <!-- <div class="hover d-flex align-items-center item-name d-flex align-items-center">
+              <span class="mr-2">id</span>
+            </div> -->
+            <div class="d-flex align-items-center justify-content-center">
+              <div  class="hover d-flex align-items-center item-record-count">
+                <span class="mr-2">Name</span>
+              </div>
+              <div  class="hover d-flex align-items-center item-attribute-count">
+                <span id="a" class="mr-2">Age</span>
+              </div>
+              <div class="hover d-flex align-items-center item-hook-count">
+                <span class="mr-2">Email</span>
+              </div>
+              <div class="hover d-flex align-items-center item-reference-count">
+                <span class="mr-2">Gender</span>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngFor="let po of post;let i=index">
+            <div (dblclick)="view(po, 'view')" class="list-group-item d-flex align-items-center justify-content-start">
+              <!-- <div class="item-name fw-500 d-flex align-items-center">
+                <span class="ml-2 pl-1 text-dark hover service-name" 
+                  ></span>
+              </div> -->
+              <input #check type="checkbox" [(ngModel)]="po.checked" (change)="onChange($event,po)">
+              <div class="d-flex align-items-center justify-content-center">
+                <div [title]="po.name" class="item-attribute-count d-block text-truncate">{{po.name}}</div>
+                <div class="item-reference-count">{{po.age}}</div>  
+                <div class="item-hook-count">{{po.email}}</div>
+                <div class="item-reference-count">{{po.gender}}</div>
+              </div> 
+              <div class="ml-6" type="text" (click)="view(po, 'edit')">View</div>
+              <div class="ml-6">
+                <button class="btn btn-warning" type="button" (click)="delete(po._id)">
+                  Delete
+                </button>
+              </div>           
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>  
+</div>
+
+</div>

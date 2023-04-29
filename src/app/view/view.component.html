@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="d-block pb-4 pt-4">
+        <button type="button" (click)="edit=!edit; edit? '':update()" class="btn btn-warning d-inline-block ml">{{edit? 'Save':'Edit'}}</button>
+        <button type="button" (click)="location.back()" class="btn btn-warning d-inline-block ml">Back</button>
+    </div>
+    <div class="pb-4 pt-4">
+        <div class="text-xl">USER DETAILS</div>
+    </div>
+    <div [formGroup]="editForm">
+        <div class="form-group row mb-2">
+            <span class="col-2 text-uppercase">username:</span>
+            <input type="email" class="col-4" [title]="editForm.value.email" formControlName="email" [readOnly]="!edit">
+            <span class="col-2 text-uppercase">Name:</span>
+            <input type="text" class="col-4" formControlName="name"  [readOnly]="!edit">
+        </div>
+        <div class="form-group row mb-2">
+            <span class="col-2 text-uppercase">Age:</span>
+            <input type="text" class="col-4" formControlName="age"  [readOnly]="!edit">
+            <span class="col-2 text-uppercase">Gender:</span>
+            <input type="text" class="col-4" formControlName="gender"  [readOnly]="!edit">
+        </div>
+        <div class="form-group row">
+            <label class="col-2 text-uppercase">Proof:</label>
+            <div class="form-group d-block">
+                <select id="Proof" class="d-inline-block" style="height: 30px;" formControlName="proofType"
+                [attr.disabled]="edit ? null : ''">
+                  <option [value]="Proof" selected="proofType" *ngFor="let Proof of ProofType"
+                    >{{Proof}}</option>
+                </select>
+                <input class="d-inline-block" type="text" [placeholder]="editForm.value.proofType+' Number'" 
+                formControlName="proofId" [readOnly]="!edit">
+              </div>
+        </div>
+    </div>

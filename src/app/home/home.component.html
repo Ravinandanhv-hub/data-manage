@@ -1,0 +1,135 @@
+<!-- <div class="text-center justify-content-center">
+  <div class="spinner-border" role="status">
+  </div>
+  <div class="sr-only">Loading...</div>
+</div> -->
+<!-- <div class="default-loader d-flex justify-content-center w-100 h-100">
+  <div class="align-self-center text-center">
+    <div class="spinner-border text-dark" role="status">
+      <span class="sr-only">Processing...</span>
+    </div>
+    <div class="text-secondary mt-2">Processing...</div>
+  </div>
+</div> -->
+<div class="container">
+  <div class="text-center justify-content-center" *ngIf="showLoader">
+    <div class="spinner-border" role="status">
+    </div>
+    <div class="sr-only">Loading...</div>
+  </div>
+    <form [formGroup]="form" (ngSubmit)="createUser()">
+      <div class="form-group" >
+        <label for="Email">Email address</label>
+        <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+        [ngClass]="{
+          'is-invalid': !form.controls['email'].valid && form.controls['email'].touched
+        }">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+       <div class="form-group">
+        <label for="Name">Name</label>
+        <input formControlName="name" id="Name" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input formControlName="age" id="age" type="number" class="form-control">
+      </div>
+      <div>
+        <span *ngIf="form.value.age">{{form.value.age>18?(form.value?.age>60)?'Senior':'Major':'Minor'}}</span>
+      </div>
+      <div class="form-froup">
+        <label>Gender</label><br>
+        <input type="radio" value="Male" id="Male" formControlName="gender"><label for="Male">Male</label>
+        <input type="radio" value="Female" id="Female" formControlName="gender"><label for="Female">Female</label>
+      </div>
+      <div class="form-group d-block">
+        <label for="Proof">Proof Type</label><br>
+        <select id="Proof" class="d-inline-block" style="height: 30px;" formControlName="proofType">
+          <option [value]="Proof" *ngFor="let Proof of ProofType"
+            >{{Proof}}</option>
+        </select>
+        <input class="d-inline-block" type="text" placeholder="{{form.value.proofType}} Number" 
+        formControlName="proofId">
+      </div>
+      <button [disabled]="!form.valid" type="submit" class="btn btn-success mb-4">Submit</button>
+    </form>
+    <!-- <div class="d-block">
+      <input *ngIf="post?.length>0" class="d-inline-block" type="checkbox" [checked]="(arr?.length==post?.length)? true:false" 
+       (change)="selectAll($event)">
+      <button *ngIf="arr?.length>0" class="btn btn-warning d-inline-block ml" type="button" (click)="deleteAll()">
+       Delete{{arr?.length>0? ' ('+arr?.length+')': ''}}
+      </button>
+      <button *ngIf="arr?.length>0" class="btn btn-primary d-inline-block ml" type="button" (click)="bEdit()">
+        {{arr?.length>1? 'Bulk Edit ('+arr?.length+')': 'Edit ('+arr?.length+')'}}
+      </button>
+    </div>
+  <div class="d-flex flex-column w-100  position-relative">
+    <div class="card-container">
+      <div class="list-group">
+        <div
+          class="list-group-item d-flex align-items-center justify-content-start header py-0 bg-light text-uppercase font-11 fw-500">
+          <div class="d-flex align-items-center justify-content-center">
+            <div  class="hover d-flex align-items-center item-record-count">
+              <span class="mr-2">Name</span>
+            </div>
+            <div  class="hover d-flex align-items-center item-attribute-count">
+              <span class="mr-2">Age</span>
+            </div>
+            <div class="hover d-flex align-items-center item-hook-count">
+              <span class="mr-2">Email</span>
+            </div>
+            <div class="hover d-flex align-items-center item-reference-count">
+              <span class="mr-2">Gender</span>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngFor="let po of post;let i=index">
+          <div (dblclick)="view(po, 'view')" class="list-group-item d-flex align-items-center justify-content-start">
+            <input type="checkbox" [(ngModel)]="po.checked" (change)="onChange($event,po)">
+            <div class="d-flex align-items-center justify-content-center">
+              <div title="{{po.name}}" class="item-attribute-count d-block text-truncate">{{po.name}}</div>
+              <div class="item-reference-count">{{po.age}}</div>  
+              <div class="item-hook-count">{{po.email}}</div>
+              <div class="item-reference-count">{{po.gender}}</div>
+            </div> 
+            <div class="ml-6" type="text" (click)="view(po, 'edit')">View</div>
+            <div class="ml-6">
+              <button class="btn btn-warning" type="button" (click)="delete(po._id)">
+                Delete
+              </button>
+            </div>           
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div> -->
+  <!-- <div  >
+    <div [ngClass]="{'show':true}" class="edit-window border-left border-top position-fixed bg-white">
+      <div>
+        <label for="Email">Email address</label>
+        <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+        [ngClass]="{
+          'is-invalid': !form.controls['email'].valid && form.controls['email'].touched
+        }">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+       <div class="form-group">
+        <label for="Name">Name</label>
+        <input formControlName="name" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input formControlName="age" type="number" class="form-control">
+      </div>
+    </div> -->
+      <!-- <div>
+        <span *ngIf="editForm.value.age">{{editForm.value.age>18?(editForm.value?.age>60)?'Senior':'Major':'Minor'}}</span>
+      </div>
+      <div>
+        <input type="radio" value="Male"  formControlName="gender"><label for="Male">Male</label>
+        <input type="radio" value="Female" formControlName="gender"><label for="Female">Female</label>
+      </div>
+      <button [disabled]="!editForm.valid" type="submit" (click)="update()" class="btn btn-success">Update</button> -->
+  <!-- </div> -->
+</div>
+  

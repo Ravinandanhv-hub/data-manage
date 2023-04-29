@@ -1,0 +1,7 @@
+<ag-grid-angular #agGrid
+  style="width: 1218px; height: 520px; margin-left: 20px;" class="ag-theme-alpine bg-light"
+  (filterChanged)="filterChange()" rowSelection="multiple" [rowData]="post" [pagination]=true [paginationPageSize]=10
+  [columnDefs]="columnDefs" (rowDoubleClicked)="open($event)" overlayNoRowsTemplate="<span>No Records</span>">
+</ag-grid-angular>
+<!-- <button (click)="create()">click</button> -->
+

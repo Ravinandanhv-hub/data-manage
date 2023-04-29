@@ -1,0 +1,17 @@
+.nav1{
+    background-color: #3d3c3c;
+    border: none;
+    display: block;
+    .a{
+        color: rgb(192, 192, 207);
+        transition: color 0.2s;
+    }
+    .a:hover{
+        color: white;
+    }
+    .active-link{
+        background-color: rgb(243, 143, 50);
+        color: white;
+    }
+}
+
